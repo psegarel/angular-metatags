@@ -10,23 +10,21 @@ import { MetatagsService, TagContent } from 'src/app/services/metatags.service';
 })
 export class AboutComponent {
 
-  data$:Observable<any> = this.dataService.getData('about').pipe(
-    
-    tap( value => {
-      if(value){
-        let tags:TagContent = {
-          title:value.title,
-          description:value.description,
-          imgUrl:value.imgUrl
-        }
-  
-        this.metatagsService.updateTags(tags);
-      }
+  // updateTags:Observable<any> = this.metatagsService.update('about').pipe(
+  //   tap( content => this.pageContent = content)
+  // );
 
-    }) );
+  pageContent:any = {
+    title:'About',
+    description:'About hard-coded description',
+    imgUrl:'https://cdn.lorem.space/images/furniture/.cache/1920x1080/martin-pechy-bpg-ngqrPc8-unsplash.jpg'
+  };  
   
   constructor(
     private dataService:DataService,
     private metatagsService:MetatagsService){
+      if(this.pageContent){
+        this.metatagsService.updateTags(this.pageContent);
+      }
   }
 }

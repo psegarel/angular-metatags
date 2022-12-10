@@ -10,22 +10,11 @@ import { MetatagsService, TagContent } from 'src/app/services/metatags.service';
 })
 export class GalleryComponent {
 
-  data$:Observable<any> = this.dataService.getData('gallery').pipe(
-    
-    tap( value => {
-      if(value){
-        let tags:TagContent = {
-          title:value.title,
-          description:value.description,
-          imgUrl:value.imgUrl
-        }
-  
-        this.metatagsService.updateTags(tags);
-      }
-
-    })
+  updateTags:Observable<any> = this.metatagsService.update('gallery').pipe(
+    tap( content => this.pageContent = content)
   );
-  
+  pageContent:any;  
+
   constructor(
     private dataService:DataService,
     private metatagsService:MetatagsService){

@@ -1,3 +1,9 @@
-<div *ngIf="data$|async as data">
-    <h1>{{data.title}}</h1>
+<div *ngIf="pageContent">
+    <h1>{{pageContent.title}}</h1>
+    <h2>{{pageContent.description}}</h2>
 </div>
+
+<div class="hide">
+    {{updateTags|async}}
+</div>
+
