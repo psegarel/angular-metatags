@@ -1,27 +1,33 @@
 # AngularMetatags
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+This project is a Meta Tags test generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
 
-## Development server
+## Routes
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+There are four routes. 
+- Home
+- Projects
+- Gallery
+- About
 
-## Code scaffolding
+The first 3 routes pull their data from a http call.
+The About page has harcoded values.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Metatags Service
 
-## Build
+The metatags service has 3 methods
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Init
+Called from app.component, sets the metatags globally
 
-## Running unit tests
+- Update
+Pulls the data from a http request then updates the metatags for a specific route, the page data is updated from the same value returned
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Result so far...
+- Metatags are successfully set globally
+- Home metatags not updated
+- Projects metatags not updated
+- Gallery metatags not updated
+- About metatags updated
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
