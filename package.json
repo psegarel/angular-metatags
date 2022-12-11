@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run prerender && npm run copy:hosting",
+    "build": "npm run build:ssr && npm run copy:hosting",
     "copy:hosting": "cp -r ./dist ./functions/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
