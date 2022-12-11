@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { table } from 'console';
+import { map, Observable, tap } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 import { MetatagsService } from 'src/app/services/metatags.service';
 
 @Component({
@@ -9,9 +11,20 @@ import { MetatagsService } from 'src/app/services/metatags.service';
 })
 export class HomeComponent {
 
-  updateTags$:Observable<any> = this.metatagsService.update('home');
-  
+  updateTags$:Observable<any> = this.dataService.store$.pipe(
+   map( val => {
+    if(val && val['home']){
+      return val['home'] 
+    }
+   }),
+   tap( content => {
+    if(content){
+      this.metatagsService.updateTags(content)
+    }
+   })
+  )
   constructor(
+    private dataService:DataService,
     private metatagsService:MetatagsService){
   }
 }

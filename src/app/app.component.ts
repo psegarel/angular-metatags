@@ -7,7 +7,10 @@ import { MetatagsService } from './services/metatags.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private metatagsService:MetatagsService){
+  
+  constructor(
+    private metatagsService:MetatagsService){
+    
     this.metatagsService.init();
   }
   title = 'angular-metatags';

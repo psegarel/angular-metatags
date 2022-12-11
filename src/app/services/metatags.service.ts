@@ -55,7 +55,6 @@ export class MetatagsService {
             description: value.description,
             imgUrl: value.imgUrl,
           };
-
           this.updateTags(tags);
         }
       })

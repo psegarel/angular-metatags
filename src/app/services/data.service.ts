@@ -1,24 +1,36 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, of, tap } from 'rxjs';
+import { first, map, Observable, of, tap } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { TagContent } from './metatags.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private isBrowser!:boolean;
-
   private configUrl = 'assets/data.json';
+
+  store$:Observable<any> = this.getAllData();
+  tagContent!:TagContent;
+  
   constructor(
-    @Inject(PLATFORM_ID) platformId:Object,
+    @Inject(PLATFORM_ID) private platformId:Object,
     private http: HttpClient) {
-      this.isBrowser = isPlatformBrowser(platformId)
+  }
+
+  getAllData(){
+    if(isPlatformBrowser(this.platformId)){
+      return this.http.get(this.configUrl).pipe(
+        //tap( val => console.log(val))
+      )
+    }else {
+      return of(null)
+    }
   }
 
   getData(name:string){
-    if(this.isBrowser){
+    if(isPlatformBrowser(this.platformId)){
       return this.http.get(this.configUrl).pipe(
         map( (value:any) => value[name]))
     }else {
