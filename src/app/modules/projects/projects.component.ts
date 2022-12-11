@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { MetatagsService, TagContent } from 'src/app/services/metatags.service';
 
 @Component({
   selector: 'app-projects',
@@ -9,9 +10,17 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ProjectsComponent {
 
-  data$:Observable<any> = this.dataService.getData('projects');
+  pageRef:string = 'projects'
+  data$:Observable<any> = this.dataService.getData(this.pageRef).pipe(
+    tap( (content:TagContent|null) => {
+      if(content && content.title){
+        this.metatagsService.updateTags(content);
+      }
+    })
+  );
   constructor(
-    private dataService:DataService){
+    private dataService:DataService,
+    private metatagsService:MetatagsService){
   }
 
 }

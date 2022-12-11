@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CanLoadPageGuard } from './can-load-page.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { CanLoadPageGuard } from './can-load-page.guard';
     AppRoutingModule
   ],
   providers: [
-    CanLoadPageGuard
   ],
   bootstrap: [AppComponent]
 })

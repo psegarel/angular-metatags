@@ -62,6 +62,7 @@ export class MetatagsService {
   }
 
   updateTags(content: TagContent) {
+
     this.title.setTitle(content.title);
 
     this.meta.updateTag({ name: 'description', content: content.description });
