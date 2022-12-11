@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MetatagsService } from 'src/app/services/metatags.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-gallery',
@@ -9,10 +9,9 @@ import { MetatagsService } from 'src/app/services/metatags.service';
 })
 export class GalleryComponent {
 
-  updateTags$:Observable<any> = this.metatagsService.update('gallery');
-
+  data$:Observable<any> = this.dataService.getData('gallery');
   constructor(
-    private metatagsService:MetatagsService){
+    private dataService:DataService){
   }
 
 }

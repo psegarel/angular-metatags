@@ -24,6 +24,7 @@ export class CanLoadPageGuard implements CanLoad {
 
     let path: string | undefined = route.path;
 
+
     if (typeof path != 'undefined') {
       let routeData: Observable<any> =
         route.path == ''
@@ -33,7 +34,7 @@ export class CanLoadPageGuard implements CanLoad {
       return routeData.pipe(
         map( val => {
           if(val && val.title){
-            this.metatagsService.updateTags(val);
+            this.metatagsService.updateTags(val);    console.log(val);
             return true;
           }
           return false;

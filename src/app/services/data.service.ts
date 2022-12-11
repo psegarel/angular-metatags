@@ -22,6 +22,7 @@ export class DataService {
         //tap( val => console.log(val))
       )
     }else {
+      console.log('Server call')
       return of(null)
     }
   }
