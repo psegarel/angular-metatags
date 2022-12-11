@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
-import { first, map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DataService } from './services/data.service';
 import { MetatagsService } from './services/metatags.service';
 

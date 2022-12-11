@@ -11,9 +11,6 @@ export class DataService {
 
   private configUrl = 'assets/data.json';
 
-  store$:Observable<any> = this.getAllData();
-  tagContent!:TagContent;
-  
   constructor(
     @Inject(PLATFORM_ID) private platformId:Object,
     private http: HttpClient) {
