@@ -24,10 +24,6 @@ Called from app.component, sets the metatags globally
 Pulls the data from a http request then updates the metatags for a specific route, the page data is updated from the same value returned
 
 ## Result so far...
-- Metatags are successfully set globally
-- Home metatags not updated
-- Projects metatags not updated
-- Gallery metatags not updated
-- About metatags updated
+- Metatags are successfully updated on the local server with Cloud Functions
 
 
